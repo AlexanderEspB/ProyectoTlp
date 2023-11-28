@@ -19,6 +19,6 @@ from django.urls import path, include
 from miapp import views
 urlpatterns = [
     path ('',views.index, name="home"),
-    path ('Usuario/',views.index2, name="home"),
+    path ('Usuario/',views.index2, name="home1"),
     path ('admin/', admin.site.urls),   
 ]
