@@ -59,21 +59,15 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Agrega filas según sea necesario -->
-                <tr>
-                    <td>Hito 1</td>
-                    <td>2023-01-01</td>
-                    <td>2023-01-10</td>
-                    <td>Tipo A</td>
-                    <td>Segmento X</td>
-                </tr>
-                <tr>
-                    <td>Hito 2</td>
-                    <td>2023-02-15</td>
-                    <td>2023-03-01</td>
-                    <td>Tipo B</td>
-                    <td>Segmento Y</td>
-                </tr>
+                {% for evento in eventos %}
+                    <tr>
+                        <td>{{ evento.titulo }}</td>
+                        <td>{{ evento.fecha_inicio }}</td>
+                        <td>{{ evento.fecha_termino }}</td>
+                        <td>{{ evento.tipo }}</td>
+                        <td>{{ evento.segmento.tipo }}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
