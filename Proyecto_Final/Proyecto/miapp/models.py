@@ -2,17 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Segmento(models.Model):
-    nombre=models.CharField(max_length=50 )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     TIPO_CHOICES = [
-        ('C',"Comunidad USM"),
-        ('E',"Estudiante"),
-        ('P',"Profesor"),
-        ('J',"Jefe de Carrera"), 
+        ('COMUNIDAD USM',"Comunidad USM"),
+        ('ESTUDIANTE',"Estudiante"),
+        ('PROFESOR',"Profesor"),
+        ('JEFE DE CARRERA',"Jefe de Carrera"), 
 
     ]
     tipo = models.CharField(max_length=50, choices=TIPO_CHOICES)
     def str(self):
-        return self.nombre
+        return f"{self.user} {self.tipo}"
 class Evento(models.Model):
     TIPO_CHOICES = [
         ('VACACIONES', 'Vacaciones'),

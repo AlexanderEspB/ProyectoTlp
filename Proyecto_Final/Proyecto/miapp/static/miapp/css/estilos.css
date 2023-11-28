@@ -1,0 +1,19 @@
+.custom-bg-color{
+    background-color: #004B85;
+}
+.row-12{
+    background-color: #004B85;
+}
+#boton{
+    background-color: black;
+    float:right;
+    margin-top: 84px;
+}
+#boton2{
+    background-color: black;
+    float:right;
+    margin-top: 84px;
+}
+#calendario{
+    margin-left: 400px;
+}
