@@ -8,43 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario eventos</title>
     <link href="{% static 'miapp/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'miapp/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'miapp/css/estilos.css' %}">
 </head>
 
 <body>
     <div class="row-12">
-      <img src="{% static 'miapp/image/Logo.jpg' %}" alt="" width="500px">
+        <a href="/admin/" class="btn btn-primary" id="boton2">Menu admin</a>
+      <img src="{% static 'miapp/image/Logo.png' %}" alt="" width="600px">
     </div>
     
-    <div>
+    <div id="calendario">
       <img src="{% static 'miapp/image/calendar-31953_640.webp' %}" alt="">
     </div>
     
-    <div class="row mt-4">
-        <div class="col">
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Segmento
-                </button>
-                <ul class="dropdown-menu">
-                    <!-- Opciones del menú desplegable para Segmento -->
-                </ul>
-            </div>
-        </div>
-        <div class="col-8">
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm" type="button">
-                    Tipo
-                </button>
-                <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <!-- Opciones del menú desplegable para Tipo -->
-                </ul>
-            </div>
-        </div>
-    </div>
+    <form method="get" action="{% url 'home1' %}">
+        {{ form.tipo }}
+        {{ form.segmento }}
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
    
 
     <div class="row">
@@ -78,21 +59,15 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Agrega filas según sea necesario -->
-                <tr>
-                    <td>Hito 1</td>
-                    <td>2023-01-01</td>
-                    <td>2023-01-10</td>
-                    <td>Tipo A</td>
-                    <td>Segmento X</td>
-                </tr>
-                <tr>
-                    <td>Hito 2</td>
-                    <td>2023-02-15</td>
-                    <td>2023-03-01</td>
-                    <td>Tipo B</td>
-                    <td>Segmento Y</td>
-                </tr>
+                {% for evento in eventos %}
+                    <tr>
+                        <td>{{ evento.titulo }}</td>
+                        <td>{{ evento.fecha_inicio }}</td>
+                        <td>{{ evento.fecha_termino }}</td>
+                        <td>{{ evento.tipo }}</td>
+                        <td>{{ evento.segmento.tipo }}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -104,8 +79,26 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 
-    <script src="{% static 'myapp/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'myapp/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'miapp/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'miapp/js/bootstrap.min.js'%}"></script>
+    <footer class="custom-bg-color text-light p-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Información de contacto</h5>
+              <p>Correo: Alexander.esparza@usm.cl</p>
+              <p>Teléfono: (32) 265 4000</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Universidad Federico Santa Maria</h5>
+              <!-- Agrega aquí los iconos de tus redes sociales -->
+              <a href="#" class="text-light mr-3"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-light mr-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </footer>
 </body>
 
 </html>
